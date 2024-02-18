@@ -3,6 +3,12 @@
 ## Description
 TelegramCryptoTracker is a Telegram bot that provides live cryptocurrency market data using the Whitebit API. Users can access a list of available cryptocurrencies and receive real-time price updates along with graphical representations of price trends.
 
+## Screenshot
+<p float="left">
+  <img src="https://github.com/UnknownKoreanSmiley/TelegramCryptoTrackerBot/blob/master/screenshot/Screenshot%202024-02-18%20175716.png" width="400" alt="Screenshot 1" />
+  <img src="https://github.com/UnknownKoreanSmiley/TelegramCryptoTrackerBot/blob/master/screenshot/Screenshot%202024-02-18%20175726.png" width="400" alt="Screenshot 2" />
+</p>
+
 ## Features
 - **Live Price Updates**: Get real-time updates on cryptocurrency prices.
 - **Interactive Interface**: Easily navigate through available cryptocurrencies using interactive buttons.
