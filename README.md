@@ -16,11 +16,11 @@ TelegramCryptoTracker is a Telegram bot that provides live cryptocurrency market
 - **WebSocket Integration**: Utilizes WebSocket for efficient and real-time data transmission.
 
 ## Setup Instructions
-1. Clone the repository: `git clone https://github.com/YourUsername/TelegramCryptoTracker.git`
+1. Clone the repository: `git clone https://github.com/dhruvin771/TelegramCryptoTracker.git`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Create a `.env` file based on the provided `.env.example` and add your Telegram Bot token and chat ID.
 4. Obtain a Telegram Bot token from BotFather on Telegram.
-5. Find your chat ID using tools like `get_id_bot` on Telegram.
+5. Find your chat ID using Rose-Bot on Telegram.
 6. Run the bot: `python bot.py`
 
 ## Usage
