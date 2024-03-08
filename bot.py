@@ -135,9 +135,10 @@ async def connect_and_send_message():
                 while True:
                     data = await websocket.recv()
                     handle_data(data)
+                    await asyncio.sleep(2) 
         except websockets.exceptions.ConnectionClosedError:
             print("Connection closed, attempting to reconnect...")
-            await asyncio.sleep(3) 
+            await asyncio.sleep(5) 
         except Exception as e:
             print(f"An error occurred: {e}")
             traceback.print_exc()
@@ -157,7 +158,7 @@ async def close_websocket():
     is_connected = False
 
 # handle incoming market data
-def handle_data(data):
+async def handle_data(data):
     global previous_close_price, previous_message_id, graph_image
     try:
         parsed_data = json.loads(data)
@@ -182,14 +183,18 @@ def handle_data(data):
             if not graph_image:
                 markup.add(telebot.types.InlineKeyboardButton(text="Image", callback_data="GraphImage"))
             markup.add(telebot.types.InlineKeyboardButton(text="Close", callback_data="CloseSocket"))
-            if previous_message_id:
-                bot.edit_message_text(chat_id=str(CHAT_ID), message_id=previous_message_id, text=message_text, reply_markup=markup)
-            else:
-                sent_message = bot.send_message(chat_id=str(CHAT_ID), text=message_text, reply_markup=markup)
-                previous_message_id = sent_message.message_id
+            try:
+                if previous_message_id:
+                    bot.edit_message_text(chat_id=str(CHAT_ID), message_id=previous_message_id, text=message_text, reply_markup=markup)
+                else:
+                    sent_message = bot.send_message(chat_id=str(CHAT_ID), text=message_text, reply_markup=markup)
+                    previous_message_id = sent_message.message_id
+            except Exception as e:
+                await asyncio.sleep(30) 
             previous_close_price = close_price
     except Exception as e:
         print(f"An error occurred while handling data: {e}")
+        await asyncio.sleep(30) 
         traceback.print_exc()
 
 # start bot polling
